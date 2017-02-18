@@ -1,11 +1,11 @@
 'use strict';
 
 const foldl = (f) => (a) => (xs) =>
-  (xs && xs.length) ? foldl (f) (f(a, xs[0])) (xs.slice(1))
+  (xs && xs.length) ? foldl (f) (f(a, head(xs))) (tail(xs))
   : a
 
 const foldr = (f) => (a) => (xs) =>
-  (xs && xs.length) ? f (xs[0], foldr (f) (a) (xs.slice(1)))
+  (xs && xs.length) ? f (head(xs), foldr (f) (a) (tail(xs)))
   : a
 
 const map = (f) =>
